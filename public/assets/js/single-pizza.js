@@ -120,7 +120,7 @@ function handleNewCommentSubmit(event) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Something went wrong!');
+        res.status(404).json({ message: 'There was an error.' });
       }
       response.json();
     })
@@ -128,9 +128,7 @@ function handleNewCommentSubmit(event) {
       console.log(commentResponse);
       location.reload();
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => res.json(err));
 }
 
 function handleNewReplySubmit(event) {
@@ -161,7 +159,7 @@ function handleNewReplySubmit(event) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Something went wrong!');
+        res.status(404).json({ message: 'There was an error.' });
       }
       response.json();
     })
@@ -169,9 +167,7 @@ function handleNewReplySubmit(event) {
       console.log(commentResponse);
       location.reload();
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => res.json(err));
 }
 
 $backBtn.addEventListener('click', function() {
